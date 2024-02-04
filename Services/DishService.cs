@@ -12,18 +12,37 @@ namespace PizzeriaManagementAPI.Services
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
+        private readonly ILogger<DishService> _logger;
 
-        public DishService(DataContext context, IMapper mapper)
+        public DishService(DataContext context, IMapper mapper, ILogger<DishService> logger)
         {
             _context = context;
             _mapper = mapper;
+            this._logger = logger;
         }
+        public async Task DeleteAsync(int id)
+        {
+            _logger.LogWarning($"Dish with id: {id} Delete action invoked");
+            Dish? dish = _context.Dishes.FirstOrDefault(d => d.Id == id);
+            if (dish is null) throw new NotFoundException("Dish with given id does not exist");
+            _context.Remove(dish);
+            await _context.SaveChangesAsync();
+        }
+        public async Task<int> CreateAsync(EditDishDto dto)
+        {
+            var dish = _mapper.Map<Dish>(dto);
+            await _context.Dishes.AddAsync(dish);
+            await _context.SaveChangesAsync();   
+
+            return dish.Id;
+        }
+
         public async Task<List<DishDto>> GetAllAsync()
         {
-            var tasks = await _context.Dishes.ToListAsync();
-            var tasksDto = _mapper.Map<List<DishDto>>(tasks);
+            var dishes = await _context.Dishes.ToListAsync();
+            var dishesDto = _mapper.Map<List<DishDto>>(dishes);
 
-            return tasksDto;
+            return dishesDto;
         }
         public async Task<DishDto> GetByIdAsync(int id)
         {
@@ -32,6 +51,16 @@ namespace PizzeriaManagementAPI.Services
             var dishDto = _mapper.Map<DishDto>(dish);
 
             return dishDto;
+        }
+        public async Task UpdateAsync(int id, EditDishDto dto)
+        {
+            var dish = await _context.Dishes.FirstOrDefaultAsync(d =>  d.Id == id);
+            if (dish is null) throw new NotFoundException("Dish with given id does not exist");
+            dish.Name = dto.Name;
+            dish.Description = dto.Description;
+            dish.Price = dto.Price;
+
+            await _context.SaveChangesAsync();
         }
     }
 }

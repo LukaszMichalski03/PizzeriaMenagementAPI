@@ -20,6 +20,8 @@ builder.Services.AddDbContext<DataContext>(
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddScoped<IDishService, DishService>();
+builder.Services.AddScoped<ISizeService, SizeService>();
+builder.Services.AddScoped<ICustomerDataService, CustomerDataService>();
 
 builder.Host.UseNLog();
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
@@ -37,6 +39,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
+
+app.UseMiddleware<ErrorHandlingMiddleware>();
+
 app.MapControllers();
 
 app.Run();

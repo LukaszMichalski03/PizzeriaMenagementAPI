@@ -134,3 +134,10 @@ C:\Users\Łukasz\Desktop\kursy\C#\aspNet\PizzeriaManagementAPI\obj\Debug\net8.0\
 C:\Users\Łukasz\Desktop\kursy\C#\aspNet\PizzeriaManagementAPI\obj\Debug\net8.0\PizzeriaManagementAPI.pdb
 C:\Users\Łukasz\Desktop\kursy\C#\aspNet\PizzeriaManagementAPI\obj\Debug\net8.0\PizzeriaManagementAPI.genruntimeconfig.cache
 C:\Users\Łukasz\Desktop\kursy\C#\aspNet\PizzeriaManagementAPI\obj\Debug\net8.0\ref\PizzeriaManagementAPI.dll
+C:\Users\Łukasz\Desktop\kursy\C#\aspNet\PizzeriaManagementAPI\bin\Debug\net8.0\nlog.config
+C:\Users\Łukasz\Desktop\kursy\C#\aspNet\PizzeriaManagementAPI\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\Łukasz\Desktop\kursy\C#\aspNet\PizzeriaManagementAPI\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Łukasz\Desktop\kursy\C#\aspNet\PizzeriaManagementAPI\bin\Debug\net8.0\NLog.dll
+C:\Users\Łukasz\Desktop\kursy\C#\aspNet\PizzeriaManagementAPI\bin\Debug\net8.0\NLog.Extensions.Logging.dll
+C:\Users\Łukasz\Desktop\kursy\C#\aspNet\PizzeriaManagementAPI\bin\Debug\net8.0\NLog.Web.AspNetCore.dll
+C:\Users\Łukasz\Desktop\kursy\C#\aspNet\PizzeriaManagementAPI\obj\Debug\net8.0\PizzeriaManagementAPI.sourcelink.json

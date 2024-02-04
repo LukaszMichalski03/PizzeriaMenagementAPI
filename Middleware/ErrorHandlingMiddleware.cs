@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Http.HttpResults;
 using PizzeriaManagementAPI.Exceptions;
 
 namespace PizzeriaManagementAPI.Middleware
@@ -19,13 +20,13 @@ namespace PizzeriaManagementAPI.Middleware
             }
             catch (NotFoundException ex)
             {
-                _logger.LogError(ex, ex.Message);
-
-                context.Response.StatusCode = 500;
-                await context.Response.WriteAsync("Something Went Wrong");
+                
+                context.Response.StatusCode = 404;
+                await context.Response.WriteAsync("Something Went Wrong: " +ex.Message);
             }
             catch (Exception ex) 
             {
+                _logger.LogError(ex, ex.Message);
                 context.Response.StatusCode = 500;
                 await context.Response.WriteAsync(ex.Message);
             }            
