@@ -24,7 +24,7 @@ namespace PizzeriaManagementAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("PizzeriaManagementAPI.Entities.CustomerData", b =>
+            modelBuilder.Entity("PizzeriaManagementAPI.Entities.CustomerDataDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,7 +72,7 @@ namespace PizzeriaManagementAPI.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("PizzeriaManagementAPI.Entities.Dish", b =>
+            modelBuilder.Entity("PizzeriaManagementAPI.Entities.DishDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -143,10 +143,10 @@ namespace PizzeriaManagementAPI.Migrations
 
                     b.HasIndex("SizeId");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("OrderItemsDto");
                 });
 
-            modelBuilder.Entity("PizzeriaManagementAPI.Entities.Size", b =>
+            modelBuilder.Entity("PizzeriaManagementAPI.Entities.SizeDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -167,45 +167,45 @@ namespace PizzeriaManagementAPI.Migrations
 
             modelBuilder.Entity("PizzeriaManagementAPI.Entities.Order", b =>
                 {
-                    b.HasOne("PizzeriaManagementAPI.Entities.CustomerData", "CustomerData")
+                    b.HasOne("PizzeriaManagementAPI.Entities.CustomerDataDto", "CustomerDataDto")
                         .WithMany()
                         .HasForeignKey("CustomerDataId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CustomerData");
+                    b.Navigation("CustomerDataDto");
                 });
 
             modelBuilder.Entity("PizzeriaManagementAPI.Entities.OrderItem", b =>
                 {
-                    b.HasOne("PizzeriaManagementAPI.Entities.Dish", "Dish")
+                    b.HasOne("PizzeriaManagementAPI.Entities.DishDto", "DishDto")
                         .WithMany()
                         .HasForeignKey("DishId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("PizzeriaManagementAPI.Entities.Order", "Order")
-                        .WithMany("OrderItems")
+                        .WithMany("OrderItemsDto")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PizzeriaManagementAPI.Entities.Size", "Size")
+                    b.HasOne("PizzeriaManagementAPI.Entities.SizeDto", "SizeDto")
                         .WithMany()
                         .HasForeignKey("SizeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Dish");
+                    b.Navigation("DishDto");
 
                     b.Navigation("Order");
 
-                    b.Navigation("Size");
+                    b.Navigation("SizeDto");
                 });
 
             modelBuilder.Entity("PizzeriaManagementAPI.Entities.Order", b =>
                 {
-                    b.Navigation("OrderItems");
+                    b.Navigation("OrderItemsDto");
                 });
 #pragma warning restore 612, 618
         }

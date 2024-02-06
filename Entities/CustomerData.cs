@@ -29,5 +29,6 @@ namespace PizzeriaManagementAPI.Entities
 
         [MaxLength(6)]
         public string PostalCode { get; set; }
+        public Order Order { get; set; }
     }
 }

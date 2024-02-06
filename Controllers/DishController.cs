@@ -32,7 +32,7 @@ namespace PizzeriaManagementAPI.Controllers
         public async Task<ActionResult> Create([FromBody]EditDishDto dto)
         {
             int result = await _dishService.CreateAsync(dto);
-            return Created($"/api/Dish/{result}", null);
+            return Created($"DishDto/{result}", null);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete([FromRoute]int id)

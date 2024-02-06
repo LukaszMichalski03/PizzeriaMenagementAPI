@@ -22,9 +22,9 @@ namespace PizzeriaManagementAPI.Services
         }
         public async Task DeleteAsync(int id)
         {
-            _logger.LogWarning($"Dish with id: {id} Delete action invoked");
+            _logger.LogWarning($"DishDto with id: {id} Delete action invoked");
             Dish? dish = _context.Dishes.FirstOrDefault(d => d.Id == id);
-            if (dish is null) throw new NotFoundException("Dish with given id does not exist");
+            if (dish is null) throw new NotFoundException("DishDto with given id does not exist");
             _context.Remove(dish);
             await _context.SaveChangesAsync();
         }
@@ -47,7 +47,7 @@ namespace PizzeriaManagementAPI.Services
         public async Task<DishDto> GetByIdAsync(int id)
         {
             var dish = await _context.Dishes.FirstOrDefaultAsync(x => x.Id == id);
-            if (dish is null) throw new NotFoundException("Dish not found!");
+            if (dish is null) throw new NotFoundException("DishDto not found!");
             var dishDto = _mapper.Map<DishDto>(dish);
 
             return dishDto;
@@ -55,7 +55,7 @@ namespace PizzeriaManagementAPI.Services
         public async Task UpdateAsync(int id, EditDishDto dto)
         {
             var dish = await _context.Dishes.FirstOrDefaultAsync(d =>  d.Id == id);
-            if (dish is null) throw new NotFoundException("Dish with given id does not exist");
+            if (dish is null) throw new NotFoundException("DishDto with given id does not exist");
             dish.Name = dto.Name;
             dish.Description = dto.Description;
             dish.Price = dto.Price;

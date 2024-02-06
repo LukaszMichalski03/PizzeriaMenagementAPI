@@ -29,7 +29,7 @@ namespace PizzeriaManagementAPI.Services
         public async Task<SizeDto> GetByIdAsync(int id)
         {
             var size = await _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
-            if (size == null) throw new NotFoundException("Size with given id does not exist!");
+            if (size == null) throw new NotFoundException("SizeDto with given id does not exist!");
             var sizeDto = _mapper.Map<SizeDto>(size);
             return sizeDto;
         }
@@ -43,16 +43,16 @@ namespace PizzeriaManagementAPI.Services
         }
         public async Task DeleteAsync(int id)
         {
-            _logger.LogWarning($"Size with id: {id} Delete action invoked");
+            _logger.LogWarning($"SizeDto with id: {id} Delete action invoked");
             var size = await _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
-            if (size is null) throw new NotFoundException("Size with given id does not exist!");
+            if (size is null) throw new NotFoundException("SizeDto with given id does not exist!");
             _context.Sizes.Remove(size);
             await _context.SaveChangesAsync();
         }
         public async Task UpdateAsync(int id, EditSizeDto dto)
         {
             var size = await _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
-            if (size is null) throw new NotFoundException("Size with given id does not exist!");
+            if (size is null) throw new NotFoundException("SizeDto with given id does not exist!");
             size.Diameter = dto.Diameter;
             size.PriceModifier = dto.PriceModifier;
             await _context.SaveChangesAsync();

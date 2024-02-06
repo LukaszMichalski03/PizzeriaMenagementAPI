@@ -79,7 +79,7 @@ namespace PizzeriaManagementAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderItems",
+                name: "OrderItemsDto",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -113,17 +113,17 @@ namespace PizzeriaManagementAPI.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_DishId",
-                table: "OrderItems",
+                table: "OrderItemsDto",
                 column: "DishId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_OrderId",
-                table: "OrderItems",
+                table: "OrderItemsDto",
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_SizeId",
-                table: "OrderItems",
+                table: "OrderItemsDto",
                 column: "SizeId");
 
             migrationBuilder.CreateIndex(
@@ -136,7 +136,7 @@ namespace PizzeriaManagementAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "OrderItems");
+                name: "OrderItemsDto");
 
             migrationBuilder.DropTable(
                 name: "Dishes");

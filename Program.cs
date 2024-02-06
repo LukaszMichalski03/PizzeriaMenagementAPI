@@ -22,6 +22,7 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped<IDishService, DishService>();
 builder.Services.AddScoped<ISizeService, SizeService>();
 builder.Services.AddScoped<ICustomerDataService, CustomerDataService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 builder.Host.UseNLog();
 builder.Services.AddScoped<ErrorHandlingMiddleware>();

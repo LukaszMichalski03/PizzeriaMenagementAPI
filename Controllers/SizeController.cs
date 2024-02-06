@@ -35,7 +35,7 @@ namespace PizzeriaManagementAPI.Controllers
         public async Task<ActionResult> Create([FromBody] EditSizeDto dto)
         {
             int createId = await _sizeService.CreateAsync(dto);
-            return Created($"api/size/{createId}", null);
+            return Created($"size/{createId}", null);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete([FromRoute]int id)
@@ -43,7 +43,7 @@ namespace PizzeriaManagementAPI.Controllers
             await _sizeService.DeleteAsync(id);
             return NoContent();
         }
-        [HttpPost("{id}")]
+        [HttpPut("{id}")]
         public async Task<ActionResult> Update([FromRoute]int id, [FromBody] EditSizeDto dto)
         {
             await _sizeService.UpdateAsync(id, dto);
